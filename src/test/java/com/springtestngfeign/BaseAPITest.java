@@ -8,5 +8,6 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 @SpringBootTest(classes = FeignSpringimplementationApplication.class)
 @ContextConfiguration(classes = APIConfiguration.class)
+
 public class BaseAPITest extends AbstractTestNGSpringContextTests {
 }

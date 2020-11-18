@@ -36,14 +36,16 @@ public class APIConfiguration {
 
     @Bean
     public Decoder decoder() {
-        HttpMessageConverter jacksonConverter = new MappingJackson2HttpMessageConverter(OBJECT_MAPPER);
+        HttpMessageConverter jacksonConverter = jsonConverter();
         ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(jacksonConverter);
         return new ResponseEntityDecoder(new SpringDecoder(objectFactory));
     }
 
     @Bean
-    public Encoder encoder(ObjectFactory<HttpMessageConverters> httpMessageConverters){
-        return new SpringFormEncoder(new SpringEncoder(httpMessageConverters));
+    public Encoder encoder() {
+        HttpMessageConverter jacksonConverter = jsonConverter();
+        ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(jacksonConverter);
+        return new SpringFormEncoder(new SpringEncoder(objectFactory));
     }
 
     @Bean
