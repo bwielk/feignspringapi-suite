@@ -1,6 +1,7 @@
 package com.springtestngfeign.frignimplementation.services;
 
 import com.springtestngfeign.frignimplementation.client.UserService;
+import com.springtestngfeign.frignimplementation.model.CommentDTO;
 import com.springtestngfeign.frignimplementation.model.UpdateRequestDTO;
 import com.springtestngfeign.frignimplementation.model.UpdateResponseDTO;
 import com.springtestngfeign.frignimplementation.model.UserResponseDTO;
@@ -21,5 +22,9 @@ public class UsersServiceImpl {
 
     public UpdateResponseDTO createPost(UpdateRequestDTO updateRequestDTO){
         return userService.createPost(updateRequestDTO);
+    }
+
+    public List<CommentDTO> getCommentsByPostId(int id){
+        return userService.getCommentByPostId(id);
     }
 }

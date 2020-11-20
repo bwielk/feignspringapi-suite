@@ -26,8 +26,8 @@ public class APIConfiguration {
             .setSerializationInclusion(JsonInclude.Include.NON_NULL)
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(SerializationFeature.INDENT_OUTPUT, true)
+            .configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, false)
             .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-
 
     @Bean
     public ObjectMapper objectMapper(){

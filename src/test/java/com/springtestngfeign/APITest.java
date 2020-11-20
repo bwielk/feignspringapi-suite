@@ -1,5 +1,6 @@
 package com.springtestngfeign;
 
+import com.springtestngfeign.frignimplementation.model.CommentDTO;
 import com.springtestngfeign.frignimplementation.model.UpdateRequestDTO;
 import com.springtestngfeign.frignimplementation.model.UpdateResponseDTO;
 import com.springtestngfeign.frignimplementation.model.UserResponseDTO;
@@ -17,7 +18,7 @@ public class APITest extends BaseAPITest {
     @Test
     public void testUsersAreRetrieved(){
         List<UserResponseDTO> users = usersService.getUsers();
-        assert !users.isEmpty();
+        assert !users.isEmpty() && users.size()==10;
     }
 
     @Test
@@ -29,6 +30,12 @@ public class APITest extends BaseAPITest {
         UpdateResponseDTO updateResponseDTO = usersService.createPost(updateRequestDTO);
         assert updateResponseDTO.getBody().equals("Hello");
         assert !updateRequestDTO.getTitle().equals("ABC");
+    }
+
+    @Test
+    public void testCanGetCommentsByPostId(){
+        List<CommentDTO> comments = usersService.getCommentsByPostId(1);
+        assert comments.isEmpty();
     }
 
 }
