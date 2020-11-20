@@ -30,8 +30,13 @@ public interface UserService {
                     produces = APPLICATION_JSON_VALUE)
     UpdateResponseDTO createPost(UpdateRequestDTO updateRequestDTO);
 
-    @RequestMapping(method = RequestMethod.POST,
+    @RequestMapping(method = RequestMethod.GET,
                     path = "/posts/{postId}/comments",
                     produces = APPLICATION_JSON_VALUE)
-    List<CommentDTO> getCommentByPostId(@PathVariable("postId") int postId);
+    List<CommentDTO> getCommentByPostIdPathVariable(@PathVariable("postId") int postId);
+
+    @RequestMapping(method = RequestMethod.GET,
+                    path = "/comments",
+                    produces = APPLICATION_JSON_VALUE)
+    List<CommentDTO> getCommentsByPostIdRequestParam(@RequestParam int postId);
 }

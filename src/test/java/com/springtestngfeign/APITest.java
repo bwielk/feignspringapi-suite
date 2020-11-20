@@ -33,9 +33,18 @@ public class APITest extends BaseAPITest {
     }
 
     @Test
-    public void testCanGetCommentsByPostId(){
-        List<CommentDTO> comments = usersService.getCommentsByPostId(1);
-        assert comments.isEmpty();
+    public void testCanGetCommentsByPostIdWithPathVariable(){
+        int postId = 1;
+        List<CommentDTO> comments = usersService.getCommentsByPostIdPathVariable(postId);
+        assert !comments.isEmpty() && comments.size()==5;
+        assert comments.stream().allMatch(x -> x.getPostId() ==postId);
     }
 
+    @Test
+    public void testCanGetCommentByPostIdWithRequestParam() {
+        int postId = 2;
+        List<CommentDTO> comments = usersService.getCommentsByPostIdRequestParam(postId);
+        assert !comments.isEmpty() && comments.size() == 5;
+        assert comments.stream().allMatch(x -> x.getPostId() ==postId);
+    }
 }

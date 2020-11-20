@@ -24,7 +24,11 @@ public class UsersServiceImpl {
         return userService.createPost(updateRequestDTO);
     }
 
-    public List<CommentDTO> getCommentsByPostId(int id){
-        return userService.getCommentByPostId(id);
+    public List<CommentDTO> getCommentsByPostIdPathVariable(int id){
+        return userService.getCommentByPostIdPathVariable(id);
+    }
+
+    public List<CommentDTO> getCommentsByPostIdRequestParam(int id) {
+        return userService.getCommentsByPostIdRequestParam(id);
     }
 }
