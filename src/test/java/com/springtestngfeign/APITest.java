@@ -1,9 +1,6 @@
 package com.springtestngfeign;
 
-import com.springtestngfeign.frignimplementation.model.CommentDTO;
-import com.springtestngfeign.frignimplementation.model.UpdateRequestDTO;
-import com.springtestngfeign.frignimplementation.model.UpdateResponseDTO;
-import com.springtestngfeign.frignimplementation.model.UserResponseDTO;
+import com.springtestngfeign.frignimplementation.model.*;
 import com.springtestngfeign.frignimplementation.services.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
@@ -46,5 +43,11 @@ public class APITest extends BaseAPITest {
         List<CommentDTO> comments = usersService.getCommentsByPostIdRequestParam(postId);
         assert !comments.isEmpty() && comments.size() == 5;
         assert comments.stream().allMatch(x -> x.getPostId() ==postId);
+    }
+
+    @Test
+    public void dummyTest() {
+        PersonsDTO personsDTO = usersService.getPersons();
+        assert personsDTO != null;
     }
 }
